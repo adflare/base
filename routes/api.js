@@ -7,8 +7,8 @@ router.get('/', function(req, res) {
     return AgentModel.find(function (err, agents) {
         if (!err) {
             x = agents;
-            //return res.send(agents);
-            res.render('index', {title: 'Test', agents: agents});
+            return res.send(agents);
+            //res.render('index', {title: 'Test', agents: agents});
         } else {
             res.statusCode = 500;
             console.error('Internal error(%d): %s',res.statusCode,err.message);
