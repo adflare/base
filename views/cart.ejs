@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title><%= title %></title>
+    <link rel='stylesheet' href='/stylesheets/app.css'>
+    <script src="/javascripts/jquery.min.js"></script>
+    <script src="/javascripts/bootstrap.min.js"></script>
+</head>
+<body>
+<div class="container-fluid col-sm-10 col-sm-offset-1">
+    <div class="row">
+        <div class="col-sm-12">
+            <a href="#">Редактировать документ</a>
+            <a href="#">Удалить документ</a>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-12">
+            <h1>Поставщик - <%= id %></h1>
+        </div>
+        <div class="col-sm-6">
+            <h4 class="text-sm-center">Документы</h4>
+            <table class="table table-bordered">
+                <% documents.forEach(function(document) { %>
+                <tr>
+                <td><%= document.type %></td>
+                </tr>
+                <% }); %>
+            </table>
+        </div>
+        <div class="col-sm-6">
+            <h4 class="text-sm-center">Область сертификации</h4>
+            <table class="table table-bordered">
+                <% scope.forEach(function(scope) { %>
+                <tr>
+                    <td><%= scope.document %></td>
+                </tr>
+                <% }); %>
+            </table>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-4"><h4 class="text-sm-center">Необходимые документы</h4>
+            <table class="table table-bordered">
+                <tr class="bg-success">
+                    <td>Для</td>
+                    <td>Перечень</td>
+                </tr>
+                <% requirements.forEach(function(req) { %>
+                <tr>
+                    <td><%= req.type %></td>
+                    <td><%= req.desc %></td>
+                </tr>
+                <% }); %>
+            </table>
+        </div>
+        <div class="col-sm-4"><h4 class="text-sm-center">Сроки</h4>
+            <table class="table table-bordered">
+                <tr class="bg-success">
+                    <td>Документ</td>
+                    <td>Сроки</td>
+                </tr>
+                <% deadlines.forEach(function(req) { %>
+                <tr>
+                    <td><%= req.doc %></td>
+                    <td><%= req.deadline %></td>
+                </tr>
+                <% }); %>
+            </table>
+        </div>
+        <div class="col-sm-4"><h4 class="text-sm-center">Цены</h4>
+            <table class="table table-bordered">
+                <tr class="bg-success">
+                    <td>Документ</td>
+                    <td>Стоимость</td>
+                </tr>
+                <% pricing.forEach(function(req) { %>
+                <tr>
+                    <td><%= req.doc %></td>
+                    <td><%= req.price %></td>
+                </tr>
+                <% }); %>
+            </table>
+        </div>
+    </div>
+</div>
+    <%- include powered.ejs %>
+</body>
+</html>

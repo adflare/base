@@ -1,0 +1,28 @@
+@import '../../bower_components/bootstrap/scss/bootstrap';
+@mixin centerer($horizontal: true, $vertical: true) {
+  position: absolute;
+  @if ($horizontal and $vertical) {
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  } @else if ($horizontal) {
+    left: 50%;
+    transform: translate(-50%, 0);
+  } @else if ($vertical) {
+    top: 50%;
+    transform: translate(0, -50%);
+  }
+}
+#pwd {
+  max-width: 100%;
+  height: auto;
+}
+
+#oxygen {
+  @include centerer(true, false);
+  font-size: large;
+  position: absolute;
+  bottom: 5px;
+  max-width: 10%;
+  height: auto;
+}

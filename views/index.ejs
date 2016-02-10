@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= title %></title>
+    <link rel='stylesheet' href='/stylesheets/app.css'>
+      <script src="/javascripts/jquery.min.js"></script>
+      <script src="/javascripts/bootstrap.min.js"></script>
+  </head>
+  <!--<script>
+      $.get(
+              "/api/agents",
+              {},
+              onAjaxSuccess
+      );
+
+      function onAjaxSuccess(data)
+      {
+          // Здесь мы получаем данные, отправленные сервером и выводим их на экран.
+          var map = data;
+          for (i=0; i<map.length; i++) {
+              var xhtml = '<li>' + map[i].id + '</li>';
+              $('#agentsList').append(xhtml);
+          }
+      }
+  </script> -->
+  <body>
+    <h1>Поставщики</h1>
+    <div id="agents">
+        <ul id="agentsList">
+            <% agents.forEach(function(agent) { %>
+            <a href="/agents/<%= agent._id %>"><li><%= agent.id %></li></a>
+            <% }); %>
+        </ul>
+    </div>
+    <%- include powered.ejs %>
+  </body>
+</html>
