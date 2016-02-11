@@ -56,7 +56,7 @@ router.get('/agents/:id', function(req, res) {
             return res.send({ error: 'Not found' });
         }
         if (!err) {
-            res.render('cart', {title: agent.id,
+            /*res.render('cart', {title: agent.id,
                 id: agent.id,
                 state: agent.state,
                 type: agent.type,
@@ -66,8 +66,8 @@ router.get('/agents/:id', function(req, res) {
                 requirements: agent.requirements,
                 deadlines: agent.deadlines,
                 pricing: agent.pricing
-            });
-            //return res.send({ status: 'OK', agent:agent });
+            });*/
+            return res.send(agent );
         } else {
             res.statusCode = 500;
             console.error('Internal error(%d): %s',res.statusCode,err.message);
