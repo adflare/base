@@ -12,8 +12,17 @@ db.once('open', function callback () {
 
 var Schema = mongoose.Schema;
 
-var Documents = new Schema({
-    type: {type: String, required: true}
+
+var RequiredDocs = new Schema ({
+    type: {type: String, required: true},
+    desc: {type: String, required: false}
+});
+
+var Document  = new Schema({
+    name: {type: String, required: false},
+    time: {type: String, required: false},
+    price: {type: String, required: false},
+    req: [RequiredDocs]
 });
 
 var certScope = new Schema ({
@@ -26,31 +35,13 @@ var Contact = new Schema ({
     email: {type: String, required: false}
 });
 
-var RequiredDocs = new Schema ({
-    type: {type: String, required: true},
-    desc: {type: String, required: false}
-});
-
-var Deadlines = new Schema ({
-   doc: {type: String, required: true},
-   deadline: {type: String, required: false}
-});
-
-var Pricing = new Schema ({
-    doc: {type: String, required: true},
-    price: {type: String, required: true}
-});
-
 var Agent = new Schema ({
     id: {type: String, required: true},
     state: {type: Boolean, required: true, default: false},
     type: {type: String, required: false},
-    documents: [Documents],
+    docs: [Document],
     scope: [certScope],
-    contacts: [Contact],
-    requirements: [RequiredDocs],
-    deadlines: [Deadlines],
-    pricing: [Pricing]
+    contacts: [Contact]
 });
 
 var AgentModel = mongoose.model('Agent', Agent);
