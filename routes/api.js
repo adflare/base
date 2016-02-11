@@ -23,12 +23,9 @@ router.post('/agents', function(req, res) {
         id: req.body.id,
         state: req.body.state,
         type: req.body.type,
-        documents: req.body.documents,
+        docs: req.body.docs,
         scope: req.body.scope,
-        contacts: req.body.contacts,
-        requirements: req.body.requirements,
-        deadlines: req.body.deadlines,
-        pricing: req.body.pricing
+        contacts: req.body.contacts
     });
 
     agent.save(function (err) {
@@ -56,17 +53,6 @@ router.get('/agents/:id', function(req, res) {
             return res.send({ error: 'Not found' });
         }
         if (!err) {
-            /*res.render('cart', {title: agent.id,
-                id: agent.id,
-                state: agent.state,
-                type: agent.type,
-                documents: agent.documents,
-                scope: agent.scope,
-                contacts: agent.contacts,
-                requirements: agent.requirements,
-                deadlines: agent.deadlines,
-                pricing: agent.pricing
-            });*/
             return res.send(agent );
         } else {
             res.statusCode = 500;
@@ -86,12 +72,9 @@ router.put('/agents/:id', function (req, res){
         agent.id = req.body.id;
         agent.state = req.body.state;
         agent.type = req.body.type;
-        agent.documents = req.body.documents;
+        agent.docs = req.body.docs;
         agent.scope = req.body.scope;
         agent.contacts = req.body.contacts;
-        agent.requirements = req.body.requirements;
-        agent.deadlines = req.body.deadlines;
-        agent.pricing = req.body.pricing;
         return agent.save(function (err) {
             if (!err) {
                 console.info("agent updated");
